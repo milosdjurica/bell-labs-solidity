@@ -13,4 +13,15 @@ contract StoreUnitTests is Test {
         deployer = new DeployStore();
         store = deployer.run();
     }
+
+    function test_storeNote_Success() public {
+        string memory testNote = "Hello, Foundry!";
+        store.storeNote(testNote);
+        string memory realNote = store.getNote(1);
+        assertEq(realNote, testNote, "Real note should match the test note");
+    }
+
+    function test_storeNote_BadID() public view {
+        assertEq(store.getNote(999), "", "Bad ID should return empty string");
+    }
 }
