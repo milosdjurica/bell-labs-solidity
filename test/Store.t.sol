@@ -40,7 +40,7 @@ contract StoreUnitTests is Test {
         assertEq(returnedNote2, note2, "Second stored note should match note2");
     }
 
-    function testStoreNoteDifferentUsers() public {
+    function test_storeNote_DifferentUsers() public {
         string memory noteUser1 = "User1's note";
         string memory noteUser2 = "User2's note";
 
@@ -53,11 +53,26 @@ contract StoreUnitTests is Test {
         vm.prank(user2);
         store.storeNote(noteUser2);
 
+        vm.prank(user1);
         string memory returnedNoteUser1 = store.getNote(1);
         assertEq(returnedNoteUser1, noteUser1, "User1's stored note should match");
 
         vm.prank(user2);
         string memory returnedNoteUser2 = store.getNote(2);
         assertEq(returnedNoteUser2, noteUser2, "User2's stored note should match");
+    }
+
+    function test_storeNote_IncrementsID() public {
+        string memory note1 = "Note 1";
+        string memory note2 = "Note 2";
+
+        store.storeNote(note1);
+        store.storeNote(note2);
+
+        string memory returnedNote1 = store.getNote(1);
+        string memory returnedNote2 = store.getNote(2);
+
+        assertEq(returnedNote1, note1, "First stored note should match");
+        assertEq(returnedNote2, note2, "Second stored note should match");
     }
 }
