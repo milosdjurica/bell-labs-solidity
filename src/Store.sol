@@ -5,12 +5,12 @@ contract Store {
     mapping(address => mapping(uint256 => string)) s_notes;
     uint256 s_lastId;
 
-    function storeNote(string memory note) public {
+    function storeNote(string memory note_) external {
         s_lastId++;
-        s_notes[msg.sender][s_lastId] = note;
+        s_notes[msg.sender][s_lastId] = note_;
     }
 
-    function getNote(uint256 id) public view returns (string memory) {
-        return s_notes[msg.sender][id];
+    function getNote(uint256 id_) external view returns (string memory) {
+        return s_notes[msg.sender][id_];
     }
 }
