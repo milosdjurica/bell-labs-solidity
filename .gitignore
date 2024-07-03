@@ -13,6 +13,8 @@ docs/
 # Dotenv file
 .env
 
+# Broadcast
+/broadcast
 
 # Personal notes
 /a
