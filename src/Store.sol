@@ -3,7 +3,7 @@ pragma solidity 0.8.20;
 
 contract Store {
     mapping(address => mapping(uint256 => string)) s_notes;
-    uint256 s_lastId;
+    uint256 public s_lastId;
 
     function storeNote(string memory note_) external {
         s_lastId++;

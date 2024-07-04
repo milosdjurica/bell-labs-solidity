@@ -1,66 +1,42 @@
-## Foundry
+# Installation
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+1. Clone the repository
 
-Foundry consists of:
-
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
+```bash
+git clone https://github.com/milosdjurica/bell-solidity
+cd bell-solidity
 ```
 
-### Test
+2. Install dependencies
 
-```shell
-$ forge test
+```bash
+forge install
 ```
 
-### Format
+3. Create .env with ganache private key
 
-```shell
-$ forge fmt
+```
+PRIVATE_KEY="PRIVATE_KEY_HERE"
 ```
 
-### Gas Snapshots
+# Deploying contract
 
-```shell
-$ forge snapshot
+1. Start ganache
+2. Load .env variables
+
+```bash
+source .env
 ```
 
-### Anvil
+3. Run deploy script
 
-```shell
-$ anvil
+```bash
+forge script script/Store.s.sol:DeployStore --private-key $PRIVATE_KEY --rpc-url http://127.0.0.1:7545 --broadcast
+
 ```
 
-### Deploy
+# Coverage and tests
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+```bash
+forge coverage
 ```

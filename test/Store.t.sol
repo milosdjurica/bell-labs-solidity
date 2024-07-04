@@ -75,4 +75,10 @@ contract StoreUnitTests is Test {
         assertEq(returnedNote1, note1, "First stored note should match");
         assertEq(returnedNote2, note2, "Second stored note should match");
     }
+
+    function testFuzz_StoreAndRead(string memory note) public {
+        store.storeNote(note);
+        string memory savedNote = store.getNote(store.s_lastId());
+        assertEq(note, savedNote);
+    }
 }
