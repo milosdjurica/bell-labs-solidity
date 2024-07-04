@@ -40,3 +40,8 @@ forge script script/Store.s.sol:DeployStore --private-key $PRIVATE_KEY --rpc-url
 ```bash
 forge coverage
 ```
+
+# Usage
+
+1. `storeNote()` - When user is calling this method, he should provide Note as a STRING that should be saved
+2. `getNote()` - every note has its own ID and owner, and in order to access note, you need to provide ID of that note and to use account that created that note. Users can not see notes of other users, only their own notes.
