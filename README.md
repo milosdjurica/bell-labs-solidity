@@ -22,7 +22,7 @@ PRIVATE_KEY="PRIVATE_KEY_HERE"
 # Deploying contract
 
 1. Start ganache
-2. Load .env variables
+2. Load .env variables in terminal
 
 ```bash
 source .env
